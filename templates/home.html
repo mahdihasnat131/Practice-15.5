@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+<h4> This is Home Page </h4>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Musician Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Album Rating</th>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for msc in data2 %}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{msc.musician.first_name}}</td>
+                <td>{{msc.musician.email}}</td>
+                <td>{{msc.rating}}</td>
+                <td>{{msc.musician.instrument_type}}</td>
+                <td>{{msc.album_name}}</td>
+                <td>{{msc.release_date}}</td>
+                <td>
+                    <a  class='btn btn-warning text-decoration-none' href='{% url 'edit_album' msc.id %}'>Edit</a>
+                    <a class='btn btn-danger text-decoration-none' href='{% url 'delete_album' msc.id %}'>Delete</a>
+                </td>
+             </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
